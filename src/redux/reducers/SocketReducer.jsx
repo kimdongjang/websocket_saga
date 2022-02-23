@@ -1,5 +1,5 @@
 const initialState = {
-    LiveData: []
+    ListenData: []
 };
 
 export default function (state = initialState, action) {
@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
         case "SOCKET_POST":
             return {
                 ...state,
-                LiveData: [...state.LiveData, action.data],
+                ListenData: [...state.ListenData, action.data],
                 // timeLabels: [...state.timeLabels, new Date().toLocaleTimeString()]
             };
         default:

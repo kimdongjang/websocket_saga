@@ -4,40 +4,45 @@ import { SOCKET_START, SOCKET_POST } from '../redux/actions/SocketAction';
 
 class DataContainer extends Component {
     state = {
-        LiveDatas: []
+        liveData: {
+
+        }
     }
+
+    handleChange = event => {
+        console.log("handleChange")
+        this.setState({ liveData: event.target.value });
+      };
 
     componentDidMount() {
         console.log("componentDidMount live prices");
         this.props.SOCKET_START();
     }
 
-    static getDerivedStateFromProps(props, state) {
+    static getDerivedStateFromProps(nextProps, prevState) {
         // console.log(state);
         console.log("state 변경")
-        console.log(props)
-        const oldDataset = state.LiveDatas;
-        const newDataset = { ...oldDataset, data: props.LiveDatas };
-
-        return {
-            // LiveDatas: newDataset.data
+        console.log(nextProps)
+        console.log(prevState)
+        if (nextProps.liveData !== prevState.liveData) {
+            return { liveData: nextProps.liveData }
         }
     }
     render() {
         console.log('render')
-        console.log(this.state.LiveDatas)
+        // console.log(this.state.liveData)
 
-        return (            
-            <div>{this.state.LiveDatas}</div>
+        return (
+            <div>{this.state.liveData}</div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    // console.log('mapStateToProps :' + state.SocketReducer)
-    console.log(state.SocketReducer.LiveData)
+    console.log('mapStateToProps :')
+    console.log(state)
     return {
-        LiveDatas: state.SocketReducer.LiveData,
+        liveData: state.ListenData,
         // timeLabels: state.LivePrices.timeLabels
     };
 }

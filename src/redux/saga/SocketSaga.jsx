@@ -38,7 +38,7 @@ function initWebsocket() {
             }
             // console.log("value", value);
             if(value.test === "test"){
-                console.log("test 확인")
+                // console.log("test 확인")
             }
             // console.log("value.test", value.test);
             // console.log("e data", e);
