@@ -16,7 +16,7 @@ function initWebsocket() {
         };
 
         //Subscribe to websocket
-        let ws = new WebSocket("ws://ws.channels.honeycombpizza.link/ws/notify/");
+        let ws = new WebSocket("wss://ws.channels.honeycombpizza.link/ws/notify/");
         console.log("ws", ws);
 
         ws.onopen = () => {
